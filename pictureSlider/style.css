@@ -1,0 +1,33 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+img {
+	width: 600px;
+}
+
+
+ul {
+	display: none;
+}
+ul li{
+	display: inline-block;
+}
+
+.main2{
+
+	width: 600px;
+	
+	overflow: hidden;
+}
+.main2 ul{
+	width: 2400px;
+	display: block;
+	
+}
+.main2 li {
+	width: 600px;
+	
+	float: left;
+}
+
