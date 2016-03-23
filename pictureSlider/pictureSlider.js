@@ -59,3 +59,23 @@ $(document).ready(function(){
 		$(".main2 ul").css("margin-left","-"+curLeft+"px");
 	},2000);
 });
+
+
+//方法四：利用jquery的fadeIn，fadeOut
+$(document).ready(function(){
+	var imgDom = $("#pictureContainer4 li");
+	
+	var current = 0;
+
+	setInterval(function(){
+		imgDom.hide();
+		$("#pictureContainer4 li").eq(current).fadeIn('slow');
+		
+		if(current == imgDom.length-1) {
+			current = 0;
+		}else {
+			current ++;
+		}
+		
+	}, 2000);
+});

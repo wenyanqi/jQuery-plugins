@@ -6,7 +6,6 @@ img {
 	width: 600px;
 }
 
-
 ul {
 	display: none;
 }
@@ -17,7 +16,6 @@ ul li{
 .main2{
 
 	width: 600px;
-	
 	overflow: hidden;
 }
 .main2 ul{
@@ -31,3 +29,9 @@ ul li{
 	float: left;
 }
 
+#pictureContainer4 {
+	display: block;
+	width: 600px;
+	height: 380px;
+	overflow: hidden;
+}
