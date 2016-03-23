@@ -12,12 +12,14 @@ ul li {
 
 .container {
 	width: 600px;
+	overflow: hidden;
 	margin: auto;
 	z-index: 1;
 }
 .picture{
+	width: 2400px;
 	height: 364px;
-	overflow: hidden;
+	
 	z-index: 1;
 }
 .number {
@@ -41,6 +43,9 @@ ul li {
 	text-align: center;
 	font-size: 20px;
 	line-height: 40px;
+}
+.number li:hover {
+	background-color: white;
 }
 .prev {
 	width: 30px;

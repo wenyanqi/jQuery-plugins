@@ -1,36 +1,34 @@
 ;
 (function($){
 
-	$.fn.slider.defaultOptions = {
-		'imageNum': 0;
-		'imageWidth': '0px';
-		'time': 1000;
-		'current': 0;
-	} 
+
 	
 
 	var methods = {
-		init: function(options) {
+		init: function() {
 		
-			var $this = $(this);
-			var defaultOptions.imageNum = $this.children("li").length;
-			var defaultOptions.imageWidth = $this.css("width");
+			// var $this = $(this);
+			// var defaultOptions.imageNum = $this.children("li").length;
+			// var defaultOptions.imageWidth = $this.css("width");
 
-			var setting = $.extend($.fn.slider.defaultOptions,defaultOptions, options);
+			// var setting = $.extend($.fn.slider.defaultOptions,defaultOptions, options);
 
 			return $(this);
 		},
 		start: function() {
 			
+			$this = $(this);
+			
 			setInterval(function(){
-				if($.fn.slider.defaultOptions.current==
-					$.fn.slider.defaultOptions.imageWidth*($.fn.slider.defaultOptions.imageNum-1)) {
-				  $.fn.slider.defaultOptions.current = 0;
+				$this.css("margin-left","-"+defaultOptions.current+"px");
+				if(defaultOptions.current==
+					defaultOptions.imageWidth*(defaultOptions.imageNum-1)) {
+				  defaultOptions.current = 0;
 				}else {
-				  $.fn.slider.defaultOptions.current += $.fn.slider.defaultOptions.imageWidth;
+				  defaultOptions.current += defaultOptions.imageWidth;
 				}
-				$(this).css("margin-left","-"+$.fn.slider.defaultOptions.current+"px");
-			},$.fn.slider.defaultOptions.time);
+				
+			},defaultOptions.time);
 		},
 		next: function() {
 			
@@ -48,5 +46,12 @@
 			$.error('Method ' + method + 'does not exist on jQuery.tooltip');		
 		}
 	};
-
+	var defaultOptions = {
+		'imageNum': 4,
+		'imageWidth': 600,
+		'time': 1000,
+		'current': 0
+	};
 })(jQuery);
+
+
