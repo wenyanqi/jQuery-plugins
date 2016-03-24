@@ -17,9 +17,9 @@ ul li {
 	z-index: 1;
 }
 .picture{
-	width: 2400px;
+	width: 3600px;
 	height: 364px;
-	
+	margin-left: -600px;
 	z-index: 1;
 }
 .number {

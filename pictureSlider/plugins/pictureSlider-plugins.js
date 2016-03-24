@@ -41,8 +41,8 @@
 				//$this.css("margin-left","-"+options_new.current*options_new.imageWidth+"px");
 				interval = setInterval(function(){
 
-					//imageList.eq(options_new.current).hide();
-					//imageList.eq(options_new.current).slideUp();
+					// imageList.eq(options_new.current).hide();
+					// imageList.eq(options_new.current).slideUp();
 					numList.eq(options_new.current).toggleClass("current");
 					if(options_new.animate == 0) {
 						imageList.eq(options_new.current).hide();	
@@ -52,14 +52,9 @@
 						imageList.eq(options_new.current).slideUp();
 					} 
 
-					if(options_new.current == options_new.imageNum-1 ) {
-
-					  options_new.current = 0;
-					}else {
-					  options_new.current ++;
-					}
-					//$this.css("margin-left","-"+options_new.current*options_new.imageWidth+"px");
-					//setTimeout(function(){imageList.eq(options_new.current).slideDown();},600);
+					//alert(options_new.current);
+					options_new.current ++;
+					//alert(options_new.current);
 					if(options_new.animate == 0) {
 						imageList.eq(options_new.current).show();	
 					} else if(options_new.animate == 1) {
@@ -67,12 +62,16 @@
 					} else if(options_new.animate == 2) {
 						imageList.eq(options_new.current).slideDown();
 					} else {
-						
-						$this.animate({
-					        "margin-left": "-"+options_new.current*options_new.imageWidth+"px"
-					        
-					    },"slow");
-												
+						$this.animate({"margin-left": "-"+(options_new.current+1)*options_new.imageWidth+"px"},
+							{duration:'slow',complete:function(){
+								if(options_new.current == options_new.imageNum) {
+									options_new.current = 0;
+									
+									$this.css("margin-left","-"+(options_new.current+1)*options_new.imageWidth+"px");
+									numList.eq(options_new.current).toggleClass("current");
+								}
+							}
+						});
 					}
 					numList.eq(options_new.current).toggleClass("current");
 					
