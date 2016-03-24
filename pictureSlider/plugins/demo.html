@@ -28,7 +28,11 @@
 	<script type="text/javascript" src="jquery-1.4.4.min.js"></script>
 	<script type="text/javascript" src="pictureSlider-plugins.js"></script>
 	<script type="text/javascript">
-	$(".picture").slider("start");
+	$(".picture").slider("start",{"animate":3,"time":2000});
+	
+
+	//setTimeout(function(){$(".picture").slider("stop");}, 5000);
+	setTimeout(function(){$(".picture").slider("changeCurrent",0);alert("sd");},5000);
 	</script>
 </body>
 </html>

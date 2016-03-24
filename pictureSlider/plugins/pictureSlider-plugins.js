@@ -2,7 +2,17 @@
 (function($){
 
 
-	
+	var interval ;
+
+	var defaultOptions = {
+		'animate': 0,  //0--show，hide； 1--fadeIn,fadeOut 2--slideDown,slideUp  3--animate
+		'imageNum': 4,
+		'imageWidth': 600,
+		'time': 1000,
+		'current': 0
+	};
+
+	var numList ;
 
 	var methods = {
 		init: function() {
@@ -12,27 +22,76 @@
 			// var defaultOptions.imageWidth = $this.css("width");
 
 			// var setting = $.extend($.fn.slider.defaultOptions,defaultOptions, options);
+			
 
 			return $(this);
 		},
-		start: function() {
-			
+		start: function(options) {
 			$this = $(this);
-			
-			setInterval(function(){
-				$this.css("margin-left","-"+defaultOptions.current+"px");
-				if(defaultOptions.current==
-					defaultOptions.imageWidth*(defaultOptions.imageNum-1)) {
-				  defaultOptions.current = 0;
-				}else {
-				  defaultOptions.current += defaultOptions.imageWidth;
-				}
+			var imageList = $this.children("li");
+			numList = $(".number").children("li");
+			var options_new = $.extend(defaultOptions, options);
+			if(options_new.current >= options_new.imageNum) {
+				alert("图片总数"+options_new.imageNum+" <=" + "当前图片下标" +current);
+			}
+
+			//判断是不是已经start过
+			if(interval==undefined) {
 				
-			},defaultOptions.time);
-		},
-		next: function() {
+				//$this.css("margin-left","-"+options_new.current*options_new.imageWidth+"px");
+				interval = setInterval(function(){
+
+					//imageList.eq(options_new.current).hide();
+					//imageList.eq(options_new.current).slideUp();
+					numList.eq(options_new.current).toggleClass("current");
+					if(options_new.animate == 0) {
+						imageList.eq(options_new.current).hide();	
+					} else if(options_new.animate == 1) {
+						imageList.eq(options_new.current).fadeOut();
+					} else if(options_new.animate == 2) {
+						imageList.eq(options_new.current).slideUp();
+					} 
+
+					if(options_new.current == options_new.imageNum-1 ) {
+
+					  options_new.current = 0;
+					}else {
+					  options_new.current ++;
+					}
+					//$this.css("margin-left","-"+options_new.current*options_new.imageWidth+"px");
+					//setTimeout(function(){imageList.eq(options_new.current).slideDown();},600);
+					if(options_new.animate == 0) {
+						imageList.eq(options_new.current).show();	
+					} else if(options_new.animate == 1) {
+						imageList.eq(options_new.current).fadeIn();
+					} else if(options_new.animate == 2) {
+						imageList.eq(options_new.current).slideDown();
+					} else {
+						
+						$this.animate({
+					        "margin-left": "-"+options_new.current*options_new.imageWidth+"px"
+					        
+					    },"slow");
+												
+					}
+					numList.eq(options_new.current).toggleClass("current");
+					
+				},options_new.time);	
+			}
 			
+			return $(this);
+		
+		},
+		stop: function() {
+			clearInterval(interval);
+			interval = undefined;
+		},
+		changeCurrent: function(num) {
+			
+			defaultOptions.current = num;
+
 		}
+
 
 	};
 
@@ -46,12 +105,7 @@
 			$.error('Method ' + method + 'does not exist on jQuery.tooltip');		
 		}
 	};
-	var defaultOptions = {
-		'imageNum': 4,
-		'imageWidth': 600,
-		'time': 1000,
-		'current': 0
-	};
+	
 })(jQuery);
 
-
+	
