@@ -9,32 +9,26 @@
 	<div class="container">
 		<div class="view">
 			<ul class="picture">
-				<li><img src="../img/4.png"></li>
+				
 				<li><img src="../img/1.png"></li>
 				<li><img src="../img/2.png"></li>
 				<li><img src="../img/3.png"></li>
 				<li><img src="../img/4.png"></li>
-				<li><img src="../img/1.png"></li>
+				
 			</ul>
-			<ul class="number">
-				<li class="current">1</li>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li>
-			</ul>
-			<div class="prev">&lt;</div>
-			<div class="next">&gt;</div>
+			
+			
 		</div>
 	</div>
 
 	<script type="text/javascript" src="jquery-1.4.4.min.js"></script>
 	<script type="text/javascript" src="pictureSlider-plugins.js"></script>
 	<script type="text/javascript">
-	$(".picture").slider("start",{"animate":3,"time":2000});
+	$(".picture").slider().slider("start");
 	
 
 	//setTimeout(function(){$(".picture").slider("stop");}, 5000);
-	//setTimeout(function(){$(".picture").slider("changeCurrent",0);alert("sd");},5000);
+	//setTimeout(function(){$(".picture").slider("prev",0);alert("sd");},5000);
 	</script>
 </body>
 </html>
